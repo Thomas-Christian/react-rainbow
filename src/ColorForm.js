@@ -5,7 +5,12 @@ export default function ColorForm(props){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.addColor(input)
+
+        if (CSS.supports('color', `${input}`)) {
+            props.addColor(input)
+        }
+        
+        e.target.reset()
     }
 
     return (
